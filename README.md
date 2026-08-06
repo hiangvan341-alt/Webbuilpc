@@ -1,4 +1,4 @@
-# Web Build PC NOVA TECH PC v1.9.0
+# Web Build PC NOVA TECH PC v2.0.0
 
 React + Vite + Supabase, triển khai trên Vercel hoặc Render.
 
@@ -11,7 +11,7 @@ React + Vite + Supabase, triển khai trên Vercel hoặc Render.
 
 ## Nâng cấp database đang dùng
 Chạy:
-1. `supabase/01_UPGRADE_EXISTING_TO_v1.9.0.sql`
-2. `supabase/02_VERIFY_v1.9.0.sql`
+1. `supabase/01_UPGRADE_EXISTING_TO_v2.0.0.sql`
+2. `supabase/02_VERIFY_v2.0.0.sql`
 
 Không chạy lại `schema.sql` trên database đang có dữ liệu.
