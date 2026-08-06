@@ -21,9 +21,17 @@ Khu vực Admin được tích hợp trực tiếp thành một trang trong webs
 
 Không cần chạy SQL mới cho phiên bản này.
 
-## v2.0.5
+## v2.0.6
 
 - Phiên Admin được giữ khi chuyển giữa Admin, Build PC và Hướng dẫn, đồng thời vẫn còn sau khi tải lại trang cho tới khi bấm Đăng xuất.
 - Tên tài khoản không còn là nút đăng xuất; nút Đăng xuất được tách riêng.
 - `Lưu` trong Build PC là lưu bản nháp cấu hình trên chính trình duyệt đang dùng. Web tự khôi phục bản nháp này khi mở lại. Đây không phải lịch sử báo giá và không đồng bộ sang máy khác.
-- Database hiện có phải chạy `supabase/01_UPGRADE_EXISTING_TO_v2.0.5.sql`, sau đó chạy file kiểm tra.
+- Database hiện có phải chạy `supabase/01_UPGRADE_EXISTING_TO_v2.0.6.sql`, sau đó chạy file kiểm tra.
+
+
+## v2.0.6
+- Đồng bộ đầy đủ toàn bộ RPC frontend với Supabase.
+- Xác thực lại phiên khi tải trang và chuyển tab.
+- Đăng xuất xóa session ở Supabase.
+- Không che lỗi database bằng thông báo sai mật khẩu.
+- SQL cũ chuyển vào `supabase/legacy/old_versions`.

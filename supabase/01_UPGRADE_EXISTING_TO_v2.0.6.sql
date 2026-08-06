@@ -1,3 +1,7 @@
+-- WEB BUILD PC v2.0.6 - NÂNG CẤP ĐỒNG BỘ ĐẦY ĐỦ
+-- Dùng cho database đang có dữ liệu. Có thể chạy lặp lại.
+-- File này tự tạo/sửa toàn bộ bảng và RPC frontend đang sử dụng, không phụ thuộc migration cũ.
+
 -- WEB BUILD PC v1.7.0 - CÀI MỚI HOÀN TOÀN
 -- Chạy duy nhất file này cho Supabase project mới.
 

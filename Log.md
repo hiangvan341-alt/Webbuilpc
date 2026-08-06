@@ -30,3 +30,13 @@
 - Nút Lưu cấu hình nay lưu bản nháp và tự khôi phục khi mở lại web.
 - Bổ sung migration đầy đủ tạo lại RPC xem, sửa, xóa báo giá, đặc biệt `employee_delete_quote`.
 - Bổ sung file kiểm tra RPC và bảng lịch sử báo giá.
+
+
+## v2.0.6 - 2026-08-06 09:56 (Asia/Bangkok)
+- Sửa liên kết đăng nhập/đăng xuất và xác thực phiên Admin/user.
+- Thêm RPC validate/logout cho Admin và user.
+- Đồng bộ chữ ký toàn bộ RPC frontend đang gọi.
+- Sửa lỗi token hết hạn khi gửi yêu cầu đặt hàng.
+- Tạo SQL nâng cấp đầy đủ `01_UPGRADE_EXISTING_TO_v2.0.6.sql`.
+- Tạo kiểm tra `02_VERIFY_v2.0.6.sql`.
+- Chuyển SQL cũ vào `supabase/legacy/old_versions`.
