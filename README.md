@@ -1,4 +1,4 @@
-# Web Build PC NOVA TECH PC v1.7.0
+# Web Build PC NOVA TECH PC v1.8.0
 
 ## Chức năng chính mới
 - Tài khoản người dùng được xác định là **tài khoản nhân viên**.
@@ -9,8 +9,8 @@
 - Admin có RPC xem lịch sử của toàn bộ nhân viên.
 
 ## Nâng cấp database hiện có
-1. Chạy `supabase/01_UPGRADE_EXISTING_TO_v1.7.0.sql`.
-2. Chạy `supabase/02_VERIFY_v1.7.0.sql`.
+1. Chạy `supabase/01_UPGRADE_EXISTING_TO_v1.8.0.sql`.
+2. Chạy `supabase/02_VERIFY_v1.8.0.sql`.
 3. Không chạy lại migration cũ hoặc `schema.sql` trên database đang có dữ liệu.
 
 ## Cài Supabase mới
@@ -20,3 +20,19 @@ Chạy duy nhất `supabase/schema.sql`.
 - Build command: `npm run build`
 - Output: `dist`
 - Environment: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
+
+
+## Nâng cấp database lên v1.8.0
+
+Với Supabase đang sử dụng, chạy lần lượt:
+
+1. `supabase/01_UPGRADE_EXISTING_TO_v1.8.0.sql`
+2. `supabase/02_VERIFY_v1.8.0.sql`
+
+Không chạy lại `schema.sql` trên database đang có dữ liệu.
+
+### Quyền lịch sử báo giá
+
+- Tài khoản đăng nhập: xem, sửa, xóa báo giá do chính tài khoản tạo.
+- Admin: xem toàn bộ báo giá của tất cả tài khoản.
+- Mẫu báo giá in không hiển thị mã nội bộ hoặc tên tài khoản tạo.

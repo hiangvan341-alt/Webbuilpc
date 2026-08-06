@@ -1,17 +1,25 @@
-# SQL v1.7.0
+# SQL Web Build PC v1.8.0
 
-## Database đang sử dụng
-Chỉ chạy theo thứ tự:
-1. `01_UPGRADE_EXISTING_TO_v1.7.0.sql`
-2. `02_VERIFY_v1.7.0.sql`
+## Database đang sử dụng từ phiên bản cũ
+
+Chạy đúng thứ tự:
+
+1. `01_UPGRADE_EXISTING_TO_v1.8.0.sql`
+2. `02_VERIFY_v1.8.0.sql`
 
 Không chạy lại `schema.sql` trên database đang có dữ liệu.
 
-## Database Supabase mới hoàn toàn
-Chạy duy nhất `schema.sql`.
+## Tạo Supabase mới hoàn toàn
 
-## Module
-- `modules/20_user_accounts.sql`: tài khoản nhân viên.
-- `modules/30_quote_history.sql`: lịch sử báo giá theo nhân viên và khách hàng.
+Chỉ chạy:
 
-Các file module dùng để sửa riêng từng phần. File nâng cấp đầy đủ đã bao gồm các module cần thiết.
+- `schema.sql`
+
+## Module riêng
+
+- `modules/20_user_accounts.sql`: tài khoản đăng nhập và quản lý tài khoản.
+- `modules/30_quote_history.sql`: lưu, xem, sửa, xóa lịch sử báo giá và quyền Admin xem toàn bộ.
+
+## File cũ
+
+Các migration cũ được chuyển vào `legacy/` và đổi đuôi `.disabled` để tránh chạy nhầm.
