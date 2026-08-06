@@ -22,10 +22,11 @@
 - Báo giá, yêu cầu đặt hàng và cấu hình mẫu sử dụng giá/bảo hành đã chỉnh.
 - Không thay đổi database; không cần chạy SQL.
 
-## v2.0.4 — 06/08/2026
-- Thêm vai trò `super_admin` và `sub_admin`.
-- Tài khoản `admin` mặc định được nâng thành Admin chính.
-- Admin chính có thể tạo Admin phụ.
-- Admin phụ có đầy đủ quyền quản trị hiện có, nhưng không nhìn thấy và không thể gọi chức năng tạo Admin.
-- `admin_login` trả về token, username và role.
-- Thêm SQL nâng cấp, SQL kiểm tra và module phân quyền riêng.
+## v2.0.5 — 2026-08-06 09:50 (Asia/Bangkok)
+
+- Giữ trạng thái đăng nhập Admin trong `localStorage`, không mất khi chuyển tab hoặc tải lại trang.
+- Tách nút trạng thái tài khoản và nút Đăng xuất, tránh bấm nhầm tên tài khoản thành đăng xuất.
+- Tài khoản người dùng tiếp tục giữ phiên trong `localStorage`.
+- Nút Lưu cấu hình nay lưu bản nháp và tự khôi phục khi mở lại web.
+- Bổ sung migration đầy đủ tạo lại RPC xem, sửa, xóa báo giá, đặc biệt `employee_delete_quote`.
+- Bổ sung file kiểm tra RPC và bảng lịch sử báo giá.

@@ -147,3 +147,8 @@
 .selected-editable>strong{padding-top:21px;white-space:nowrap}
 .remove-selected{margin-top:19px}
 @media(max-width:760px){.selected-editable{grid-template-columns:minmax(0,1fr) 30px}.selected-editable>strong{grid-column:1;padding-top:0}.remove-selected{grid-column:2;grid-row:1;margin-top:0}.selected-edit-fields{grid-template-columns:1fr}}
+
+/* v2.0.5: trạng thái tài khoản không còn là nút đăng xuất */
+.account-status{cursor:default!important;pointer-events:none}
+.logout-compact{display:inline-flex;align-items:center;gap:6px;border:1px solid #d0d5dd;background:#fff;color:#344054;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}
+.logout-compact:hover{background:#f9fafb;border-color:#98a2b3}

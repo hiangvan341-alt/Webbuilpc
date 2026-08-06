@@ -21,7 +21,9 @@ Khu vực Admin được tích hợp trực tiếp thành một trang trong webs
 
 Không cần chạy SQL mới cho phiên bản này.
 
-## Phân quyền Admin v2.0.4
-- `super_admin`: Admin chính, có toàn bộ quyền và được tạo Admin phụ.
-- `sub_admin`: Admin phụ, có các quyền quản trị sản phẩm, user, báo giá, đơn hàng, cấu hình mẫu và mẫu báo giá; không được tạo thêm Admin.
-- Database đang dùng: chạy `supabase/01_UPGRADE_EXISTING_TO_v2.0.4.sql`, sau đó chạy `supabase/02_VERIFY_v2.0.4.sql`.
+## v2.0.5
+
+- Phiên Admin được giữ khi chuyển giữa Admin, Build PC và Hướng dẫn, đồng thời vẫn còn sau khi tải lại trang cho tới khi bấm Đăng xuất.
+- Tên tài khoản không còn là nút đăng xuất; nút Đăng xuất được tách riêng.
+- `Lưu` trong Build PC là lưu bản nháp cấu hình trên chính trình duyệt đang dùng. Web tự khôi phục bản nháp này khi mở lại. Đây không phải lịch sử báo giá và không đồng bộ sang máy khác.
+- Database hiện có phải chạy `supabase/01_UPGRADE_EXISTING_TO_v2.0.5.sql`, sau đó chạy file kiểm tra.
