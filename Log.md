@@ -1,42 +1,13 @@
-## v2.0.3 — 06/08/2026 09:41 (Asia/Bangkok)
-
-- Sửa lỗi TypeScript `Cannot find name adminOpen` và `setAdminOpen`.
-- Xóa đoạn render `AdminPanel` dạng modal còn sót từ phiên bản cũ.
-- Khu vực Admin tiếp tục hiển thị trực tiếp trong tab Admin và các tab con.
-- Không thay đổi cơ sở dữ liệu; không cần chạy SQL mới.
-- So sánh với v2.0.2: chỉ sửa lỗi build, không thay đổi dữ liệu hay luồng nghiệp vụ.
-
 # Log.md
 
-## v2.0.1 — 06/08/2026 09:33 (Asia/Bangkok)
-- Chuyển khu vực Admin từ hộp nổi/modal thành trang chính tích hợp trong website.
-- Tab Admin nằm cùng cấp với Build PC và Hướng dẫn.
-- Bên trong trang Admin giữ các tab con: Sản phẩm, Tài khoản, Báo giá, Yêu cầu đặt hàng, Cấu hình mẫu, Mẫu báo giá, Admin.
-- Thanh tab con Admin bám trên đầu trang khi cuộn.
-- Không thay đổi Supabase/SQL.
+## v2.0.7 — 06/08/2026 (Asia/Bangkok)
 
-## v2.0.2 — 06/08/2026
-- Thêm ô sửa giá bán ngay trên từng linh kiện đã chọn.
-- Thêm ô sửa thời hạn bảo hành ngay trên từng linh kiện đã chọn.
-- Tổng cấu hình cập nhật tức thì theo giá đã sửa.
-- Báo giá, yêu cầu đặt hàng và cấu hình mẫu sử dụng giá/bảo hành đã chỉnh.
-- Không thay đổi database; không cần chạy SQL.
-
-## v2.0.5 — 2026-08-06 09:50 (Asia/Bangkok)
-
-- Giữ trạng thái đăng nhập Admin trong `localStorage`, không mất khi chuyển tab hoặc tải lại trang.
-- Tách nút trạng thái tài khoản và nút Đăng xuất, tránh bấm nhầm tên tài khoản thành đăng xuất.
-- Tài khoản người dùng tiếp tục giữ phiên trong `localStorage`.
-- Nút Lưu cấu hình nay lưu bản nháp và tự khôi phục khi mở lại web.
-- Bổ sung migration đầy đủ tạo lại RPC xem, sửa, xóa báo giá, đặc biệt `employee_delete_quote`.
-- Bổ sung file kiểm tra RPC và bảng lịch sử báo giá.
-
-
-## v2.0.6 - 2026-08-06 09:56 (Asia/Bangkok)
-- Sửa liên kết đăng nhập/đăng xuất và xác thực phiên Admin/user.
-- Thêm RPC validate/logout cho Admin và user.
-- Đồng bộ chữ ký toàn bộ RPC frontend đang gọi.
-- Sửa lỗi token hết hạn khi gửi yêu cầu đặt hàng.
-- Tạo SQL nâng cấp đầy đủ `01_UPGRADE_EXISTING_TO_v2.0.6.sql`.
-- Tạo kiểm tra `02_VERIFY_v2.0.6.sql`.
-- Chuyển SQL cũ vào `supabase/legacy/old_versions`.
+- Thay toàn bộ `window.alert`, `window.confirm`, `window.prompt` bằng toast, hộp xác nhận và hộp nhập liệu đồng bộ giao diện NOVA TECH PC.
+- Thêm tab con **Hướng dẫn Admin**.
+- Tài khoản user có thể đặt tên, lưu, xem, sử dụng, sửa và xóa cấu hình riêng.
+- Admin xem cấu hình đã lưu của toàn bộ user và đưa một cấu hình thành cấu hình mẫu công khai.
+- Admin chọn công khai/ẩn khi tạo cấu hình mẫu; có thể sửa tên, mô tả, trạng thái hiển thị và xóa cấu hình mẫu.
+- Giữ chức năng cấp lại mật khẩu user bằng hộp nhập mật khẩu riêng, không hiển thị mật khẩu cũ.
+- Thêm bảng `user_saved_configs` và các RPC quản lý cấu hình.
+- SQL hiện hành chỉ còn v2.0.7; SQL v2.0.6 đã chuyển vào `supabase/legacy/old_versions`.
+- File kiểm tra v2.0.7 trả về một bảng tổng hợp OK/MISSING.
