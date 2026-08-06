@@ -26,3 +26,14 @@ File có thể chứa nhiều cột. Web tự tìm đúng tên 5 cột cần dù
 Web tự nhận diện `Nhóm hàng(3 Cấp)` và đưa sản phẩm vào đúng thứ tự: CPU → Mainboard → RAM → VGA → SSD/HDD → PSU → Case → Tản nhiệt → Màn hình → Phụ kiện. Các nhóm Phụ phí, Dịch vụ, COMBO và AIO nguyên bộ không được nhập vào công cụ build PC.
 
 Trong cửa sổ chọn linh kiện có bộ lọc theo tên, thương hiệu, giá, tồn kho và sắp xếp sản phẩm.
+
+
+## Cập nhật v1.3.0
+
+Nếu hệ thống đã chạy schema của v1.2.0, chỉ cần chạy `supabase/migration_v1.3.0.sql` trong Supabase SQL Editor, sau đó đưa source mới lên GitHub và redeploy Vercel/Render.
+
+- Danh mục có ba kiểu xem: lưới, cột gọn, hàng ngang.
+- Admin tạo được tài khoản người dùng và tài khoản admin.
+- Không có chức năng xem lại mật khẩu; database chỉ lưu bcrypt hash.
+- Ô đăng nhập dùng `autocomplete` chuẩn để Chrome/Edge có thể đề nghị lưu mật khẩu. Web chỉ tự lưu tên đăng nhập khi người dùng đánh dấu ghi nhớ.
+- Mẫu báo giá được chỉnh trong trang quản trị và lưu vào Supabase.
