@@ -28,9 +28,9 @@ Web tự nhận diện `Nhóm hàng(3 Cấp)` và đưa sản phẩm vào đúng
 Trong cửa sổ chọn linh kiện có bộ lọc theo tên, thương hiệu, giá, tồn kho và sắp xếp sản phẩm.
 
 
-## Cập nhật v1.4.0
+## Cập nhật v1.5.0
 
-Nếu hệ thống đã chạy schema của v1.2.0, chỉ cần chạy `supabase/migration_v1.4.0.sql` trong Supabase SQL Editor, sau đó đưa source mới lên GitHub và redeploy Vercel/Render.
+Nếu hệ thống đã chạy schema của v1.2.0, chỉ cần chạy `supabase/migration_v1.5.0.sql` trong Supabase SQL Editor, sau đó đưa source mới lên GitHub và redeploy Vercel/Render.
 
 - Danh mục có ba kiểu xem: lưới, cột gọn, hàng ngang.
 - Admin tạo được tài khoản người dùng và tài khoản admin.

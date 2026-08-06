@@ -37,3 +37,56 @@
 
 /* v1.4.0: quản lý toàn bộ tài khoản người dùng */
 .user-list-head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 9px}.user-list-head button{display:flex;align-items:center;gap:6px;border:1px solid #d0d5dd;background:#fff;border-radius:8px;padding:8px 11px}.user-admin-table{overflow:auto;border:1px solid #e2e7ee;border-radius:10px}.user-admin-table table{width:100%;border-collapse:collapse;min-width:820px;font-size:12px}.user-admin-table th,.user-admin-table td{padding:10px;border-bottom:1px solid #e8ecf1;text-align:left;vertical-align:top}.user-admin-table th{background:#f7f9fb;color:#475467}.user-actions{display:flex;gap:6px}.user-actions button,.inline-edit button{width:34px;height:32px;border:1px solid #d0d5dd;border-radius:7px;background:#fff;display:inline-flex;align-items:center;justify-content:center}.user-actions .danger{color:#d92d20;border-color:#fecdca;background:#fff7f6}.status-pill{border:0;border-radius:20px;padding:6px 10px;font-size:11px;font-weight:700}.status-pill.active{background:#ecfdf3;color:#027a48}.status-pill.locked{background:#f2f4f7;color:#667085}.inline-edit{display:flex;gap:5px}.inline-edit input{height:32px;border:1px solid #d0d5dd;border-radius:7px;padding:0 8px}.password-reset{display:flex;gap:5px;margin-top:7px}.password-reset input{height:34px;min-width:160px;border:1px solid #d0d5dd;border-radius:7px;padding:0 8px}.password-reset button{height:34px;border:0;border-radius:7px;padding:0 9px;background:#172033;color:#fff}.password-reset button:last-child{background:#eef1f5;color:#344054}.no-users{padding:20px;text-align:center;color:#667085}
+
+/* v1.5.0 - Danh mục không ảnh, mặc định hàng ngang */
+.selected{grid-template-columns:minmax(0,1fr) auto 34px}
+.selected>div{min-width:0}
+.product-grid .product>img{display:none!important}
+.product-grid.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.product-grid.grid .product{padding-top:46px}
+.product-grid.grid .stock{top:13px;left:14px}
+.product-grid.columns .product{display:grid;grid-template-columns:minmax(0,1fr) 120px 125px;grid-template-rows:auto auto auto;column-gap:12px;min-height:112px;padding:11px 12px}
+.product-grid.columns .product .stock,.product-grid.columns .product .group-tag{position:static;display:inline-flex;width:max-content;font-size:11px}
+.product-grid.columns .product .group-tag{grid-column:1;grid-row:1}
+.product-grid.columns .product .stock{grid-column:2;grid-row:1;justify-self:start}
+.product-grid.columns .product h3{grid-column:1/3;grid-row:2;margin:4px 0;font-size:13px;line-height:1.35}
+.product-grid.columns .product p{grid-column:1;grid-row:3;margin:0;font-size:12px}
+.product-grid.columns .product strong{grid-column:2;grid-row:3;margin:0;font-size:14px;white-space:nowrap;text-align:right}
+.product-grid.columns .product button{grid-column:3;grid-row:1/4;align-self:center;margin:0}
+.product-grid.rows{display:flex;flex-direction:column;gap:7px}
+.product-grid.rows .product{display:grid;grid-template-columns:minmax(280px,1fr) 150px 105px 145px 125px;align-items:center;gap:12px;min-height:58px;padding:8px 11px;border-radius:10px}
+.product-grid.rows .product .stock{position:static;grid-column:3;grid-row:1;font-size:11px;text-align:center;justify-self:start}
+.product-grid.rows .product .group-tag{display:none}
+.product-grid.rows .product h3{grid-column:1;grid-row:1;margin:0;font-size:13px;line-height:1.3;min-height:0}
+.product-grid.rows .product p{grid-column:2;grid-row:1;margin:0;font-size:12px;min-height:0}
+.product-grid.rows .product strong{grid-column:4;grid-row:1;margin:0;font-size:14px;white-space:nowrap;text-align:right}
+.product-grid.rows .product button{grid-column:5;grid-row:1;white-space:nowrap;margin:0}
+
+/* Đăng nhập khách hàng đồng bộ nhận diện NOVA TECH PC */
+.customer-login-backdrop{background:linear-gradient(135deg,rgba(9,20,38,.82),rgba(0,126,99,.72));backdrop-filter:blur(5px)}
+.customer-login-dialog{position:relative;width:min(900px,calc(100vw - 28px));display:grid;grid-template-columns:1.05fr .95fr;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.customer-login-close{position:absolute;right:14px;top:14px;z-index:2;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;cursor:pointer;color:#253046}
+.customer-login-brand{padding:52px 44px;background:linear-gradient(145deg,#063d35,#00a982);color:#fff;display:flex;flex-direction:column;justify-content:center;min-height:510px}
+.customer-login-brand>img{width:104px;height:104px;object-fit:contain;background:#fff;border-radius:24px;padding:8px;margin-bottom:22px;box-shadow:0 15px 35px rgba(0,0,0,.18)}
+.customer-login-eyebrow{font-size:12px;font-weight:800;letter-spacing:2.2px;color:#b9ffeb}
+.customer-login-brand h2{font-size:34px;line-height:1.18;margin:10px 0 14px}
+.customer-login-brand>p{font-size:14px;line-height:1.75;color:#dcfff6;margin:0;max-width:450px}
+.customer-login-points{display:grid;gap:12px;margin-top:28px}
+.customer-login-points span{display:flex;align-items:center;gap:9px;font-size:13px;color:#effffb}
+.customer-login-form{padding:56px 44px 42px;display:flex;flex-direction:column;justify-content:center;gap:17px;background:#fff}
+.customer-login-title{display:flex;align-items:center;gap:12px;margin-bottom:7px;color:#008b6d}
+.customer-login-title>svg{width:44px;height:44px;padding:10px;background:#e9fff8;border-radius:12px}
+.customer-login-title b{display:block;font-size:21px;color:#182230}
+.customer-login-title small{display:block;margin-top:4px;color:#7a8495;font-size:12px}
+.customer-login-form>label{font-size:13px;font-weight:700;color:#344054}
+.login-input-wrap{display:flex;align-items:center;gap:9px;border:1px solid #d8e0e8;border-radius:11px;height:48px;padding:0 13px;margin-top:7px;background:#fbfcfd;transition:.2s}
+.login-input-wrap:focus-within{border-color:#00a982;box-shadow:0 0 0 3px rgba(0,169,130,.12);background:#fff}
+.login-input-wrap svg{color:#8a94a5;flex:0 0 auto}
+.login-input-wrap input{border:0;outline:0;background:transparent;width:100%;height:100%;font-size:14px;color:#182230}
+.customer-remember{font-weight:500!important;color:#667085!important;margin:0}
+.customer-login-submit{height:49px;border:0;border-radius:11px;background:linear-gradient(135deg,#00b98e,#008d70);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;box-shadow:0 10px 22px rgba(0,169,130,.22)}
+.customer-login-submit:hover{filter:brightness(.97);transform:translateY(-1px)}
+.customer-login-help{text-align:center;font-size:12px;line-height:1.6;color:#7a8495;margin:0}
+.customer-login-help b{color:#008b6d}
+@media(max-width:800px){.customer-login-dialog{grid-template-columns:1fr}.customer-login-brand{display:none}.customer-login-form{padding:62px 25px 30px;min-height:500px}.product-grid.rows .product{grid-template-columns:minmax(180px,1fr) 105px 120px}.product-grid.rows .product p{display:none}.product-grid.rows .product .stock{grid-column:2}.product-grid.rows .product strong{grid-column:3}.product-grid.rows .product button{grid-column:1/4;grid-row:2}.product-grid.columns{grid-template-columns:1fr}}
+@media(max-width:560px){.product-grid.grid{grid-template-columns:1fr}.selected{grid-template-columns:minmax(0,1fr) 30px}.selected strong{grid-column:1}.customer-login-title b{font-size:19px}}
