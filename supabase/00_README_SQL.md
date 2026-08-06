@@ -1,19 +1,17 @@
-# SQL Web Build PC v1.6.0
+# SQL v1.7.0
 
-## Hệ thống đang chạy bản cũ
+## Database đang sử dụng
 Chỉ chạy theo thứ tự:
-1. `01_UPGRADE_EXISTING_TO_v1.6.0.sql`
-2. `02_VERIFY_v1.6.0.sql`
+1. `01_UPGRADE_EXISTING_TO_v1.7.0.sql`
+2. `02_VERIFY_v1.7.0.sql`
 
-Không chạy lại migration v1.3.0, v1.4.0 hoặc v1.5.1. Chúng đã được chuyển vào `legacy/*.disabled` để tránh chạy nhầm.
+Không chạy lại `schema.sql` trên database đang có dữ liệu.
 
-## Cài Supabase mới hoàn toàn
-Chạy duy nhất `schema.sql`, sau đó chạy `02_VERIFY_v1.6.0.sql`.
+## Database Supabase mới hoàn toàn
+Chạy duy nhất `schema.sql`.
 
-## Quy tắc từ v1.6.0
-- `schema.sql`: nguồn chuẩn để cài mới, không chứa lịch sử chồng nối.
-- `01_UPGRADE...`: một file nâng cấp đầy đủ từ database đang có.
-- `modules/`: tách theo chức năng để bảo trì; người dùng thông thường không cần chạy riêng.
-- `diagnostics/`: câu lệnh kiểm tra/sửa thủ công, không chạy đại trà.
-- Mọi RPC cũ được `drop function ... (đúng chữ ký)` trước khi tạo lại.
-- Mọi migration phải chạy lặp lại được và không xóa dữ liệu nghiệp vụ.
+## Module
+- `modules/20_user_accounts.sql`: tài khoản nhân viên.
+- `modules/30_quote_history.sql`: lịch sử báo giá theo nhân viên và khách hàng.
+
+Các file module dùng để sửa riêng từng phần. File nâng cấp đầy đủ đã bao gồm các module cần thiết.
