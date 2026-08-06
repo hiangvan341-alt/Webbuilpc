@@ -6,3 +6,10 @@
 - Bên trong trang Admin giữ các tab con: Sản phẩm, Tài khoản, Báo giá, Yêu cầu đặt hàng, Cấu hình mẫu, Mẫu báo giá, Admin.
 - Thanh tab con Admin bám trên đầu trang khi cuộn.
 - Không thay đổi Supabase/SQL.
+
+## v2.0.2 — 06/08/2026
+- Thêm ô sửa giá bán ngay trên từng linh kiện đã chọn.
+- Thêm ô sửa thời hạn bảo hành ngay trên từng linh kiện đã chọn.
+- Tổng cấu hình cập nhật tức thì theo giá đã sửa.
+- Báo giá, yêu cầu đặt hàng và cấu hình mẫu sử dụng giá/bảo hành đã chỉnh.
+- Không thay đổi database; không cần chạy SQL.

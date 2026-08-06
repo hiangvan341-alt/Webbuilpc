@@ -134,3 +134,16 @@
 .admin-page .admin-body{padding:22px;max-height:none;overflow:visible}
 .admin-page .admin-card{box-shadow:none;border:1px solid #eaecf0}
 @media(max-width:760px){.admin-page{padding:14px 10px 40px}.admin-page-head{padding:20px 16px}.admin-page .admin-toolbar{align-items:flex-start;gap:10px}.admin-page .admin-body{padding:12px}.admin-page .admin-tabs{overflow-x:auto;flex-wrap:nowrap;width:100%;padding-bottom:4px}}
+
+/* v2.0.2 - Chỉnh giá bán và bảo hành ngay sau khi chọn sản phẩm */
+.selected-editable{align-items:flex-start}
+.selected-main{min-width:0}
+.selected-main>b{display:block;margin-bottom:3px}
+.selected-main>small{display:block;margin-bottom:10px}
+.selected-edit-fields{display:grid;grid-template-columns:minmax(150px,190px) minmax(190px,1fr);gap:10px}
+.selected-edit-fields label{display:grid;gap:5px;color:#667085;font-size:11px;font-weight:700}
+.selected-edit-fields input{width:100%;height:38px;border:1px solid #d0d5dd;border-radius:8px;padding:0 10px;background:#fff;color:#101828;font:inherit;font-size:13px;outline:none}
+.selected-edit-fields input:focus{border-color:#00b98a;box-shadow:0 0 0 3px rgba(0,185,138,.12)}
+.selected-editable>strong{padding-top:21px;white-space:nowrap}
+.remove-selected{margin-top:19px}
+@media(max-width:760px){.selected-editable{grid-template-columns:minmax(0,1fr) 30px}.selected-editable>strong{grid-column:1;padding-top:0}.remove-selected{grid-column:2;grid-row:1;margin-top:0}.selected-edit-fields{grid-template-columns:1fr}}

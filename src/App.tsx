@@ -73,6 +73,7 @@ export default function App(){
 
   function openCategory(category:CategoryKey){ setActive(category); setSearch(''); setBrandFilter(''); setStockOnly(true); setMinPrice(''); setMaxPrice(''); setSortBy('recommended') }
   function choose(p:Product){ setBuild(v=>({...v,[p.category]:p})); setActive(null); setSearch('') }
+  function updateSelected(category:CategoryKey, changes:Partial<Pick<Product,'price'|'warranty'>>){ setBuild(v=>{const current=v[category];if(!current)return v;return {...v,[category]:{...current,...changes}}}) }
   function remove(category:CategoryKey){ setBuild(v=>{const n={...v}; delete n[category]; return n}) }
   function reset(){ if(confirm('Xóa toàn bộ linh kiện đã chọn?')) setBuild({}) }
   function share(){ navigator.clipboard.writeText(location.href + '#build=' + btoa(JSON.stringify(Object.fromEntries(Object.entries(build).map(([k,v])=>[k,v?.id]))))); alert('Đã sao chép liên kết cấu hình.') }
@@ -100,7 +101,7 @@ export default function App(){
         <div className="parts-list">
           {categories.map((c,i)=>{const p=build[c.key]; return <div className="part-row" key={c.key}>
             <div className="part-index">{i+1}</div>
-            <div className="part-info"><div className="part-label">{c.label}</div>{p?<div className="selected"><div><b>{p.name}</b><small>{p.warranty || 'Chưa có thông tin bảo hành'} • Tồn {p.stock}</small></div><strong>{money(p.price)}</strong><button onClick={()=>remove(c.key)}><X size={18}/></button></div>:<button className="select-btn" onClick={()=>openCategory(c.key)}><span>+ Chọn linh kiện <small>{categoryCounts[c.key]||0} sản phẩm</small></span><ChevronRight size={18}/></button>}</div>
+            <div className="part-info"><div className="part-label">{c.label}</div>{p?<div className="selected selected-editable"><div className="selected-main"><b>{p.name}</b><small>Tồn kho: {p.stock}</small><div className="selected-edit-fields"><label><span>Giá bán</span><input type="number" min="0" step="1000" value={p.price} onChange={e=>updateSelected(c.key,{price:Math.max(0,Number(e.target.value)||0)})}/></label><label><span>Bảo hành</span><input type="text" value={p.warranty||''} placeholder="Ví dụ: 36 tháng" onChange={e=>updateSelected(c.key,{warranty:e.target.value})}/></label></div></div><strong>{money(p.price)}</strong><button className="remove-selected" onClick={()=>remove(c.key)} title="Xóa sản phẩm"><X size={18}/></button></div>:<button className="select-btn" onClick={()=>openCategory(c.key)}><span>+ Chọn linh kiện <small>{categoryCounts[c.key]||0} sản phẩm</small></span><ChevronRight size={18}/></button>}</div>
           </div>})}
         </div>
       </section>
