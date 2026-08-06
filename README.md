@@ -1,16 +1,16 @@
-# Web Build PC v2.0.8
+# Web Build PC v2.0.9
 
-Website Build PC của NOVA TECH PC dùng React + Vite + Supabase.
+## Luồng Lưu
 
-## Nâng cấp database hiện tại
+- Chọn linh kiện tại Build PC.
+- Bấm **Lưu**.
+- Nhập tên cấu hình và mô tả.
+- User lưu vào danh sách cấu hình riêng.
+- Admin lưu thành cấu hình mẫu.
 
-1. Chạy `supabase/01_UPGRADE_EXISTING_TO_v2.0.8.sql`.
-2. Chạy `supabase/02_VERIFY_v2.0.8.sql`.
-3. Không chạy lại `schema.sql` trên database đang có dữ liệu.
+## Phân biệt
 
-## Điểm mới
+- **Lưu cấu hình:** lưu bộ linh kiện để dùng lại, không gắn với khách hàng.
+- **Lưu báo giá:** lưu giao dịch/báo giá theo khách hàng, giá tại thời điểm tạo và lịch sử xử lý.
 
-- Nút Lưu cấu hình nằm nổi bật tại Tóm tắt cấu hình.
-- Lưu cấu hình theo tên trong tài khoản, không còn luồng bản nháp cục bộ.
-- Tên khách hàng trong báo giá không bắt buộc.
-- Tên báo giá: `Tên khách hàng - Tổng tiền`, hoặc `Khách lẻ - Tổng tiền`.
+Phiên bản này chỉ thay đổi giao diện và luồng frontend, không cần chạy SQL Supabase.

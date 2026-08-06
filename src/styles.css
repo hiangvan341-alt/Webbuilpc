@@ -181,3 +181,19 @@
 .actions.single-action{grid-template-columns:1fr;margin-top:8px}
 .quote-code-small{display:block;margin-top:3px;color:#8a94a6;font-size:11px;font-weight:500}
 .save-config-note{display:block;margin:6px 0 10px;text-align:center;color:#64748b;line-height:1.35}
+
+/* v2.0.9 - luồng lưu cấu hình đơn giản */
+.quick-save-backdrop{z-index:1300}
+.quick-save-dialog{width:min(520px,calc(100vw - 28px));background:#fff;border-radius:18px;box-shadow:0 24px 70px rgba(15,23,42,.22);padding:22px;display:grid;gap:15px;border:1px solid #dce8e4}
+.quick-save-dialog .modal-head{padding:0 0 12px;border-bottom:1px solid #e8efec}
+.quick-save-dialog .modal-head h2{margin:0 0 4px;color:#102a43}
+.quick-save-dialog .modal-head p{margin:0;color:#64748b;font-size:14px}
+.quick-save-dialog>label:not(.sample-visibility){display:grid;gap:7px;font-weight:700;color:#334155}
+.quick-save-dialog input[type="text"],.quick-save-dialog>label>input:not([type="checkbox"]){width:100%;box-sizing:border-box;border:1px solid #cbd5e1;border-radius:10px;padding:11px 12px;font:inherit;outline:none}
+.quick-save-dialog input:focus{border-color:#00b98e;box-shadow:0 0 0 3px rgba(0,185,142,.12)}
+.quick-public{background:#f0fdf8;border:1px solid #b8eadc;border-radius:10px;padding:11px 12px}
+.quick-save-summary{display:flex;justify-content:space-between;align-items:center;background:#f8fafc;border-radius:10px;padding:12px 14px;color:#475569}
+.quick-save-summary strong{font-size:18px;color:#00a77d}
+.quick-save-actions{display:flex;justify-content:flex-end;gap:10px}
+.quick-save-actions button{min-width:110px}
+.save-config-note{display:block;line-height:1.45;margin-top:7px;color:#64748b}

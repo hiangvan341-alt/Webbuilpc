@@ -1,12 +1,13 @@
 # Log.md
 
-## v2.0.8 — 06/08/2026 10:31 (Asia/Bangkok)
+## v2.0.9 — 06/08/2026
 
-- Đưa nút **Lưu** lên vị trí nổi bật trong khung Tóm tắt cấu hình.
-- Nút **Lưu** không còn lưu bản nháp cục bộ; tài khoản user mở trực tiếp phần đặt tên và quản lý cấu hình đã lưu.
-- Bỏ luồng `pc-builder-draft` không còn sử dụng.
-- Bỏ dấu `*` và bỏ yêu cầu bắt buộc nhập tên khách hàng khi lưu báo giá.
-- Thêm `quote_name`: tên báo giá được tạo theo `Tên khách hàng + tổng tiền`; nếu để trống dùng `Khách lẻ + tổng tiền`.
-- Lịch sử user và Admin hiển thị/tìm kiếm theo tên báo giá.
-- SQL mới tách riêng thành `01_UPGRADE_EXISTING_TO_v2.0.8.sql` và `02_VERIFY_v2.0.8.sql`.
-- SQL v2.0.7 chuyển vào `supabase/legacy/old_versions/` với đuôi `.disabled`.
+- Sắp xếp lại luồng Lưu cấu hình tại tab Build PC.
+- Bấm **Lưu** chỉ mở hộp nhập tên cấu hình ngắn gọn.
+- Tài khoản user: lưu vào **Cấu hình đã lưu** của chính tài khoản.
+- Tài khoản Admin: lưu trực tiếp thành **Cấu hình mẫu**, có lựa chọn công khai/ẩn.
+- Khách chưa đăng nhập: yêu cầu đăng nhập trước khi lưu.
+- Bỏ form tạo cấu hình mẫu trùng lặp bên trong tab Admin.
+- Tab Admin/Cấu hình mẫu chỉ còn chức năng quản lý, sửa, ẩn/hiện, xóa và lấy cấu hình user làm mẫu.
+- Làm rõ sự khác nhau giữa Lưu cấu hình và Lưu báo giá.
+- Không thay đổi Supabase, không cần chạy SQL mới.
