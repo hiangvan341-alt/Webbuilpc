@@ -1,25 +1,16 @@
-# SQL Web Build PC v1.8.0
+# SQL v1.9.0
 
-## Database đang sử dụng từ phiên bản cũ
+## Database đang dùng
+Chỉ chạy theo thứ tự:
+1. `01_UPGRADE_EXISTING_TO_v1.9.0.sql`
+2. `02_VERIFY_v1.9.0.sql`
 
-Chạy đúng thứ tự:
+Không chạy lại `schema.sql` và không chạy file trong `legacy/`.
 
-1. `01_UPGRADE_EXISTING_TO_v1.8.0.sql`
-2. `02_VERIFY_v1.8.0.sql`
+## Database mới hoàn toàn
+Chạy duy nhất `schema.sql`, sau đó có thể chạy `02_VERIFY_v1.9.0.sql`.
 
-Không chạy lại `schema.sql` trên database đang có dữ liệu.
+## Module mới
+- `modules/40_sample_configs_and_orders.sql`: cấu hình mẫu và yêu cầu đặt hàng.
 
-## Tạo Supabase mới hoàn toàn
-
-Chỉ chạy:
-
-- `schema.sql`
-
-## Module riêng
-
-- `modules/20_user_accounts.sql`: tài khoản đăng nhập và quản lý tài khoản.
-- `modules/30_quote_history.sql`: lưu, xem, sửa, xóa lịch sử báo giá và quyền Admin xem toàn bộ.
-
-## File cũ
-
-Các migration cũ được chuyển vào `legacy/` và đổi đuôi `.disabled` để tránh chạy nhầm.
+Migration v1.9.0 có thể chạy lại an toàn: bảng/cột dùng `if not exists`, RPC cũ đúng chữ ký được xóa rồi tạo lại, không xóa sản phẩm, tài khoản hoặc báo giá hiện có.

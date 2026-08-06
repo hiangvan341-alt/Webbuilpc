@@ -1,38 +1,17 @@
-# Web Build PC NOVA TECH PC v1.8.0
+# Web Build PC NOVA TECH PC v1.9.0
 
-## Chức năng chính mới
-- Tài khoản người dùng được xác định là **tài khoản nhân viên**.
-- Nhân viên đăng nhập để tạo, lưu và in báo giá cho từng khách hàng.
-- Mỗi báo giá lưu ảnh chụp tên sản phẩm, giá, bảo hành và tổng tiền tại thời điểm lập.
-- Lịch sử tách riêng theo từng nhân viên.
-- Tìm lịch sử theo tên khách hàng, số điện thoại hoặc mã báo giá.
-- Admin có RPC xem lịch sử của toàn bộ nhân viên.
+React + Vite + Supabase, triển khai trên Vercel hoặc Render.
 
-## Nâng cấp database hiện có
-1. Chạy `supabase/01_UPGRADE_EXISTING_TO_v1.8.0.sql`.
-2. Chạy `supabase/02_VERIFY_v1.8.0.sql`.
-3. Không chạy lại migration cũ hoặc `schema.sql` trên database đang có dữ liệu.
+## Tính năng
+- Chọn linh kiện lẻ hoặc cấu hình PC, không bắt buộc chọn đủ danh mục.
+- Gửi yêu cầu đặt hàng về khu vực Admin.
+- Cấu hình mẫu hiển thị trên tab Build PC.
+- Admin có các tab riêng: Sản phẩm, Tài khoản, Báo giá, Yêu cầu đặt hàng, Cấu hình mẫu, Mẫu báo giá, Admin.
+- Lịch sử báo giá toàn hệ thống có thể tìm theo tài khoản/user, khách hàng, số điện thoại và mã báo giá.
 
-## Cài Supabase mới
-Chạy duy nhất `supabase/schema.sql`.
-
-## Deploy
-- Build command: `npm run build`
-- Output: `dist`
-- Environment: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
-
-
-## Nâng cấp database lên v1.8.0
-
-Với Supabase đang sử dụng, chạy lần lượt:
-
-1. `supabase/01_UPGRADE_EXISTING_TO_v1.8.0.sql`
-2. `supabase/02_VERIFY_v1.8.0.sql`
+## Nâng cấp database đang dùng
+Chạy:
+1. `supabase/01_UPGRADE_EXISTING_TO_v1.9.0.sql`
+2. `supabase/02_VERIFY_v1.9.0.sql`
 
 Không chạy lại `schema.sql` trên database đang có dữ liệu.
-
-### Quyền lịch sử báo giá
-
-- Tài khoản đăng nhập: xem, sửa, xóa báo giá do chính tài khoản tạo.
-- Admin: xem toàn bộ báo giá của tất cả tài khoản.
-- Mẫu báo giá in không hiển thị mã nội bộ hoặc tên tài khoản tạo.
