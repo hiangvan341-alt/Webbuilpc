@@ -1,3 +1,11 @@
+## v2.0.3 — 06/08/2026 09:41 (Asia/Bangkok)
+
+- Sửa lỗi TypeScript `Cannot find name adminOpen` và `setAdminOpen`.
+- Xóa đoạn render `AdminPanel` dạng modal còn sót từ phiên bản cũ.
+- Khu vực Admin tiếp tục hiển thị trực tiếp trong tab Admin và các tab con.
+- Không thay đổi cơ sở dữ liệu; không cần chạy SQL mới.
+- So sánh với v2.0.2: chỉ sửa lỗi build, không thay đổi dữ liệu hay luồng nghiệp vụ.
+
 # Log.md
 
 ## v2.0.1 — 06/08/2026 09:33 (Asia/Bangkok)

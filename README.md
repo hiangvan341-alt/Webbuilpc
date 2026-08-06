@@ -1,6 +1,6 @@
-# Web Build PC v2.0.2
+# Web Build PC v2.0.3
 
-## Cập nhật v2.0.2
+## Cập nhật v2.0.3
 
 Sau khi chọn sản phẩm vào cấu hình, có thể sửa trực tiếp **Giá bán** và **Bảo hành**. Tổng tiền, báo giá, yêu cầu đặt hàng và cấu hình mẫu sẽ dùng thông tin đã chỉnh. Phiên bản này không cần chạy SQL mới.
 
