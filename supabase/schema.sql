@@ -30,7 +30,7 @@ create table if not exists public.pc_builds(
 
 create table if not exists public.admin_accounts(
  id uuid primary key default extensions.gen_random_uuid(),username text not null,
- password_hash text not null,is_active boolean not null default true,created_at timestamptz not null default now()
+ password_hash text not null,is_active boolean not null default true,role text not null default 'sub_admin' check(role in('super_admin','sub_admin')),created_at timestamptz not null default now()
 );
 create unique index if not exists admin_accounts_username_normalized_uidx on public.admin_accounts((lower(trim(username))));
 
@@ -39,31 +39,35 @@ create table if not exists public.admin_sessions(
  expires_at timestamptz not null default now()+interval '12 hours',created_at timestamptz not null default now()
 );
 
-insert into public.admin_accounts(username,password_hash,is_active)
-values('admin',extensions.crypt('Do12345',extensions.gen_salt('bf',12)),true)
+insert into public.admin_accounts(username,password_hash,is_active,role)
+values('admin',extensions.crypt('Do12345',extensions.gen_salt('bf',12)),true,'super_admin')
 on conflict do nothing;
 
 create or replace function public.is_valid_admin(p_token uuid)
 returns boolean language sql security definer set search_path=public
 as $$select exists(select 1 from public.admin_sessions s join public.admin_accounts a on a.id=s.admin_id where s.token=p_token and s.expires_at>now() and a.is_active)$$;
 
+create or replace function public.is_super_admin(p_token uuid)
+returns boolean language sql security definer set search_path=public
+as $$select exists(select 1 from public.admin_sessions s join public.admin_accounts a on a.id=s.admin_id where s.token=p_token and s.expires_at>now() and a.is_active and a.role='super_admin')$$;
+
 create or replace function public.admin_login(p_username text,p_password text)
-returns table(token uuid) language plpgsql security definer set search_path=public,extensions
-as $$declare v_admin uuid;v_token uuid;begin
- select a.id into v_admin from public.admin_accounts a where lower(trim(a.username))=lower(trim(coalesce(p_username,''))) and a.is_active and a.password_hash=extensions.crypt(coalesce(p_password,''),a.password_hash) limit 1;
- if v_admin is null then raise exception 'Sai tài khoản hoặc mật khẩu';end if;
+returns table(token uuid,username text,role text) language plpgsql security definer set search_path=public,extensions
+as $$declare v_admin public.admin_accounts%rowtype;v_token uuid;begin
+ select a.* into v_admin from public.admin_accounts a where lower(trim(a.username))=lower(trim(coalesce(p_username,''))) and a.is_active and a.password_hash=extensions.crypt(coalesce(p_password,''),a.password_hash) limit 1;
+ if v_admin.id is null then raise exception 'Sai tài khoản hoặc mật khẩu';end if;
  delete from public.admin_sessions where expires_at<now();
- insert into public.admin_sessions(admin_id) values(v_admin) returning admin_sessions.token into v_token;
- return query select v_token;end$$;
+ insert into public.admin_sessions(admin_id) values(v_admin.id) returning admin_sessions.token into v_token;
+ return query select v_token,v_admin.username,v_admin.role;end$$;
 
 create or replace function public.admin_create_account(p_token uuid,p_username text,p_password text)
 returns void language plpgsql security definer set search_path=public,extensions
 as $$declare v_username text:=lower(trim(coalesce(p_username,'')));begin
- if not public.is_valid_admin(p_token) then raise exception 'Phiên quản trị không hợp lệ';end if;
+ if not public.is_super_admin(p_token) then raise exception 'Chỉ Admin chính mới được tạo tài khoản Admin phụ';end if;
  if v_username !~ '^[a-z0-9_.-]{3,40}$' then raise exception 'Tên tài khoản không hợp lệ';end if;
  if length(coalesce(p_password,''))<6 then raise exception 'Mật khẩu phải có ít nhất 6 ký tự';end if;
- insert into public.admin_accounts(username,password_hash) values(v_username,extensions.crypt(p_password,extensions.gen_salt('bf',12)));
-exception when unique_violation then raise exception 'Tên tài khoản admin đã tồn tại';end$$;
+ insert into public.admin_accounts(username,password_hash,role) values(v_username,extensions.crypt(p_password,extensions.gen_salt('bf',12)),'sub_admin');
+exception when unique_violation then raise exception 'Tên tài khoản Admin đã tồn tại';end$$;
 
 create or replace function public.slugify_product(p_name text)
 returns text language sql immutable set search_path=public
@@ -317,6 +321,7 @@ revoke all on function public.get_quote_settings() from public;
 revoke all on function public.admin_update_quote_settings(uuid,jsonb) from public;
 grant execute on function public.admin_login(text,text) to anon,authenticated;
 grant execute on function public.admin_create_account(uuid,text,text) to anon,authenticated;
+grant execute on function public.is_super_admin(uuid) to anon,authenticated;
 grant execute on function public.admin_import_products(uuid,jsonb) to anon,authenticated;
 grant execute on function public.get_quote_settings() to anon,authenticated;
 grant execute on function public.admin_update_quote_settings(uuid,jsonb) to anon,authenticated;
@@ -715,6 +720,6 @@ grant execute on function public.admin_list_order_requests(uuid,text) to anon,au
 grant execute on function public.admin_update_order_request_status(uuid,uuid,text) to anon,authenticated;
 
 create table if not exists public.app_schema_version(version text primary key,applied_at timestamptz not null default now(),note text not null default '');
-insert into public.app_schema_version(version,note) values('1.9.0','Sample configurations, partial builds, order requests and modular Admin tabs') on conflict(version) do update set applied_at=now(),note=excluded.note;
+insert into public.app_schema_version(version,note) values('2.0.4','Admin roles: super_admin and sub_admin') on conflict(version) do update set applied_at=now(),note=excluded.note;
 notify pgrst,'reload schema';
 commit;
