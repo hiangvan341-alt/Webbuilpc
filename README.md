@@ -1,43 +1,25 @@
-# Web Build PC – NOVA TECH PC v1.2.0
+# Web Build PC NOVA TECH PC v1.6.0
 
-## Chức năng
-- Người dùng chọn linh kiện, tính tổng tiền, kiểm tra tương thích và in báo giá theo mẫu NOVA TECH PC.
-- Admin đăng nhập bằng tài khoản ban đầu `admin` / `Do12345`.
-- Admin tải Excel và hệ thống chỉ đọc 5 cột: `Nhóm hàng(3 Cấp)`, `Tên hàng`, `Giá bán`, `Tồn kho`, `Bảo hành`.
-- Admin có thể tạo thêm tài khoản quản trị bằng tên đăng nhập và mật khẩu.
-- Mật khẩu admin được băm bcrypt trong Supabase, không lưu văn bản thuần.
+## Nâng cấp website
+1. Đưa toàn bộ source lên GitHub.
+2. Chờ Vercel/Render build lại.
+3. Với Supabase đang dùng: chạy `supabase/01_UPGRADE_EXISTING_TO_v1.6.0.sql`.
+4. Chạy `supabase/02_VERIFY_v1.6.0.sql` và kiểm tra mọi dòng chức năng đều là `OK`.
+5. Trong Admin, tài khoản nào hiện **Cần cấp lại** thì bấm chìa khóa và cấp mật khẩu mới một lần.
 
-## Cài đặt
-1. Tạo project Supabase.
-2. Mở SQL Editor, chạy toàn bộ `supabase/schema.sql`.
-3. Tạo file `.env` từ `.env.example` và điền URL + anon key.
-4. Chạy `npm install`, sau đó `npm run dev`.
-5. Đẩy lên GitHub và import repository vào Vercel.
+## Cài Supabase mới
+Chỉ chạy `supabase/schema.sql`, không chạy các migration cũ.
 
-## Excel
-File có thể chứa nhiều cột. Web tự tìm đúng tên 5 cột cần dùng, không yêu cầu thứ tự cột cố định. Dữ liệu được cập nhật theo tên sản phẩm và nhóm hàng; tải lại file sẽ cập nhật giá, tồn kho và bảo hành thay vì tạo trùng.
+## Cấu trúc SQL
+- `schema.sql`: cài mới hoàn chỉnh, không nối lịch sử phiên bản.
+- `01_UPGRADE_EXISTING_TO_v1.6.0.sql`: nâng cấp database hiện có, có thể chạy lại.
+- `02_VERIFY_v1.6.0.sql`: kiểm tra sau nâng cấp.
+- `modules/`: SQL tách theo chức năng.
+- `diagnostics/`: câu lệnh xử lý thủ công.
+- `legacy/*.disabled`: bản cũ chỉ để đối chiếu, không được chạy.
 
-## Bảo mật
-Đổi hoặc tạo tài khoản admin mới ngay sau khi triển khai. Các thao tác nhập Excel và tạo tài khoản đều đi qua hàm `security definer` có kiểm tra session quản trị 12 giờ.
+## Tài khoản mặc định khi cài mới
+- Tên đăng nhập: `admin`
+- Mật khẩu: `Do12345`
 
-
-## Phân loại danh mục Excel
-
-Web tự nhận diện `Nhóm hàng(3 Cấp)` và đưa sản phẩm vào đúng thứ tự: CPU → Mainboard → RAM → VGA → SSD/HDD → PSU → Case → Tản nhiệt → Màn hình → Phụ kiện. Các nhóm Phụ phí, Dịch vụ, COMBO và AIO nguyên bộ không được nhập vào công cụ build PC.
-
-Trong cửa sổ chọn linh kiện có bộ lọc theo tên, thương hiệu, giá, tồn kho và sắp xếp sản phẩm.
-
-
-## Cập nhật v1.5.1
-
-Nếu hệ thống đã chạy schema của v1.2.0, chỉ cần chạy `supabase/migration_v1.5.1.sql` trong Supabase SQL Editor, sau đó đưa source mới lên GitHub và redeploy Vercel/Render.
-
-- Danh mục có ba kiểu xem: lưới, cột gọn, hàng ngang.
-- Admin tạo được tài khoản người dùng và tài khoản admin.
-- Không có chức năng xem lại mật khẩu; database chỉ lưu bcrypt hash.
-- Ô đăng nhập dùng `autocomplete` chuẩn để Chrome/Edge có thể đề nghị lưu mật khẩu. Web chỉ tự lưu tên đăng nhập khi người dùng đánh dấu ghi nhớ.
-- Mẫu báo giá được chỉnh trong trang quản trị và lưu vào Supabase.
-
-
-## Cập nhật từ v1.5.0
-Chạy `supabase/migration_v1.5.1.sql` trong Supabase SQL Editor, sau đó đăng nhập lại admin và cấp lại mật khẩu cho user đã tạo trước đó.
+Hãy tạo admin mới và đổi cách quản trị trước khi công bố hệ thống.

@@ -102,3 +102,5 @@
 .user-login-text small{font-size:9px;margin-top:3px;color:#dffff6;letter-spacing:.25px}
 .topbar .admin{height:44px;display:inline-flex;align-items:center;gap:7px;border-color:#cfd8e3;color:#344054;cursor:pointer}
 @media(max-width:680px){.user-login{padding-right:6px}.user-login-text{display:none}.topbar nav{gap:8px}.topbar .admin{padding:10px}.topbar .admin:not(:hover){font-size:0}.topbar .admin svg{font-size:initial}}
+
+.password-ok,.password-warning{display:inline-flex;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}.password-ok{background:#e9fff7;color:#087a55}.password-warning{background:#fff4df;color:#a45b00}

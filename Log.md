@@ -1,31 +1,21 @@
-# Web Build PC - Log
+# Log.md
 
-## v1.5.1 - 06/08/2026
-- Thiết kế lại nút Đăng nhập khách hàng trên thanh điều hướng theo màu thương hiệu NOVA TECH PC.
-- Chuẩn hóa tên tài khoản trước khi đăng nhập.
-- Sửa dứt điểm hàm tạo user, cấp lại mật khẩu và user_login.
-- Thêm migration_v1.5.1.sql để cập nhật Supabase và làm mới schema cache.
+## v1.6.0 — 06/08/2026 08:22 (Asia/Bangkok)
 
+### Kiểm tra lỗi
+- `schema.sql` v1.5.1 chứa nhiều phiên bản SQL nối tiếp nhau, cùng một RPC bị tạo lại nhiều lần.
+- Migration v1.3.0 giả định `created_by` đã có; database được tạo từ một luồng khác nên phát sinh lỗi 42703.
+- Migration v1.5.1 chuẩn hóa username trước khi xử lý trường hợp trùng hoa/thường, có nguy cơ lỗi unique.
+- Frontend chỉ báo chung “Sai tài khoản hoặc mật khẩu”, không phân biệt password hash cũ không hợp lệ.
+- Các migration cũ vẫn nằm cạnh file mới nên dễ bị chạy nhầm hoặc chạy sai thứ tự.
 
-## v1.5.0 — 2026-08-06 07:52 (Asia/Bangkok)
-- Thêm 3 chế độ hiển thị danh mục: lưới, cột gọn và hàng ngang.
-- Thêm đăng nhập người dùng; tài khoản do admin tạo.
-- Mật khẩu admin/người dùng chỉ lưu bcrypt, không có màn hình đọc lại mật khẩu.
-- Cho phép trình duyệt đề nghị lưu mật khẩu bằng autocomplete chuẩn; web chỉ tự nhớ tên đăng nhập khi chọn.
-- Admin chỉnh sửa tên công ty, hotline, email, địa chỉ, website, lưu ý và lời cảm ơn trên mẫu báo giá.
-- Sửa toàn bộ hàm crypt dùng schema extensions để tránh lỗi 42883 trên Supabase.
-
-
-## v1.5.0 - 06/08/2026
-- Admin xem toàn bộ tài khoản người dùng.
-- Sửa tên, khóa/mở khóa, cấp lại mật khẩu và xóa user.
-- Không hiển thị mật khẩu hiện tại; cấp mật khẩu mới sẽ vô hiệu hóa phiên đăng nhập cũ.
-- Ghi nhận lần đăng nhập gần nhất.
-
-
-## v1.5.0 - 06/08/2026
-- Bỏ hình ảnh sản phẩm khỏi danh mục và dòng linh kiện đã chọn.
-- Mặc định hiển thị danh mục theo hàng ngang để quan sát nhiều sản phẩm.
-- Giữ tùy chọn lưới, cột gọn và hàng ngang.
-- Bổ sung sắp xếp tồn kho từ ít đến nhiều.
-- Làm lại giao diện đăng nhập khách hàng theo nhận diện NOVA TECH PC.
+### Đã sửa
+- Viết lại `schema.sql` thành nguồn cài mới duy nhất, không chồng lịch sử.
+- Tạo file nâng cấp tổng hợp `01_UPGRADE_EXISTING_TO_v1.6.0.sql` có transaction, kiểm tra prerequisite và có thể chạy lặp lại.
+- Tách module tài khoản user tại `modules/20_user_accounts.sql`.
+- Drop RPC theo đúng chữ ký trước khi tạo lại.
+- Bổ sung đầy đủ cột `created_by`, `updated_at`, `last_login_at`, `password_changed_at`.
+- Xử lý username trùng sau chuẩn hóa bằng hậu tố an toàn, không xóa tài khoản.
+- Thêm kiểm tra bcrypt hash và trạng thái “Cần cấp lại” trong Admin.
+- Thêm `02_VERIFY_v1.6.0.sql` để kiểm tra extension, RPC và mật khẩu user.
+- Chuyển SQL cũ sang `legacy/*.disabled` để không chạy nhầm.
