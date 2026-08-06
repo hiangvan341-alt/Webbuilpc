@@ -159,3 +159,25 @@
 .saved-config-panel{width:min(980px,calc(100vw - 28px));max-height:90vh;overflow:auto;background:#f7faf9;border-radius:20px;padding:20px;box-shadow:0 24px 80px rgba(15,23,42,.3)}.saved-config-form{display:grid;grid-template-columns:1fr 1.4fr auto;gap:10px;margin:14px 0 18px}.saved-config-form input{height:43px;border:1px solid #d2dce3;border-radius:10px;padding:0 12px}.saved-config-form button{display:flex;align-items:center;gap:7px;border:0;border-radius:10px;padding:0 16px;background:#00bd91;color:#fff;font-weight:800;cursor:pointer}.saved-config-list{display:grid;gap:10px}.saved-config-list article{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 16px;background:#fff;border:1px solid #e2e9ed;border-radius:14px}.saved-config-list h3,.saved-config-list p{margin:0 0 4px}.saved-config-list p,.saved-config-list small{color:#64748b}.inline-edit-card{margin-top:16px;padding:18px;background:#fff;border:1px solid #dce6e9;border-radius:14px;display:grid;gap:10px}.inline-edit-card input{height:42px;border:1px solid #d2dce3;border-radius:9px;padding:0 11px}.inline-edit-card>div{display:flex;justify-content:flex-end;gap:9px}.admin-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.admin-guide-grid article{padding:18px;border:1px solid #dce9e5;background:#f8fffc;border-radius:15px}.admin-guide-grid article>b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#00c99a;color:#fff}.admin-guide-grid h4{margin:12px 0 6px}.admin-guide-grid p{margin:0;color:#607080;line-height:1.55}.sample-admin-list h4{margin-top:22px}
 @media(max-width:760px){.saved-config-form{grid-template-columns:1fr}.saved-config-form button{min-height:43px;justify-content:center}.saved-config-list article{align-items:flex-start;flex-direction:column}.admin-guide-grid{grid-template-columns:1fr}.app-toast{right:16px;bottom:16px}}
 .sample-visibility{display:flex!important;align-items:center;gap:8px;white-space:nowrap;font-weight:700;color:#405060}.sample-visibility input{width:17px!important;height:17px!important}.sample-edit-dialog label{margin-bottom:10px}.sample-edit-dialog .sample-visibility{display:flex!important;justify-content:flex-start;margin:4px 0 18px}
+
+/* v2.0.8: nút lưu cấu hình nổi bật và tên báo giá */
+.save-config-main{
+  width:100%;
+  min-height:46px;
+  margin-top:12px;
+  border:1px solid #00b987;
+  border-radius:10px;
+  background:#e9fff8;
+  color:#007e5c;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  cursor:pointer;
+}
+.save-config-main:hover{background:#d7fff1;transform:translateY(-1px)}
+.save-config-main:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.actions.single-action{grid-template-columns:1fr;margin-top:8px}
+.quote-code-small{display:block;margin-top:3px;color:#8a94a6;font-size:11px;font-weight:500}
+.save-config-note{display:block;margin:6px 0 10px;text-align:center;color:#64748b;line-height:1.35}

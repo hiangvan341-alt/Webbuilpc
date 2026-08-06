@@ -1,13 +1,12 @@
 # Log.md
 
-## v2.0.7 — 06/08/2026 (Asia/Bangkok)
+## v2.0.8 — 06/08/2026 10:31 (Asia/Bangkok)
 
-- Thay toàn bộ `window.alert`, `window.confirm`, `window.prompt` bằng toast, hộp xác nhận và hộp nhập liệu đồng bộ giao diện NOVA TECH PC.
-- Thêm tab con **Hướng dẫn Admin**.
-- Tài khoản user có thể đặt tên, lưu, xem, sử dụng, sửa và xóa cấu hình riêng.
-- Admin xem cấu hình đã lưu của toàn bộ user và đưa một cấu hình thành cấu hình mẫu công khai.
-- Admin chọn công khai/ẩn khi tạo cấu hình mẫu; có thể sửa tên, mô tả, trạng thái hiển thị và xóa cấu hình mẫu.
-- Giữ chức năng cấp lại mật khẩu user bằng hộp nhập mật khẩu riêng, không hiển thị mật khẩu cũ.
-- Thêm bảng `user_saved_configs` và các RPC quản lý cấu hình.
-- SQL hiện hành chỉ còn v2.0.7; SQL v2.0.6 đã chuyển vào `supabase/legacy/old_versions`.
-- File kiểm tra v2.0.7 trả về một bảng tổng hợp OK/MISSING.
+- Đưa nút **Lưu** lên vị trí nổi bật trong khung Tóm tắt cấu hình.
+- Nút **Lưu** không còn lưu bản nháp cục bộ; tài khoản user mở trực tiếp phần đặt tên và quản lý cấu hình đã lưu.
+- Bỏ luồng `pc-builder-draft` không còn sử dụng.
+- Bỏ dấu `*` và bỏ yêu cầu bắt buộc nhập tên khách hàng khi lưu báo giá.
+- Thêm `quote_name`: tên báo giá được tạo theo `Tên khách hàng + tổng tiền`; nếu để trống dùng `Khách lẻ + tổng tiền`.
+- Lịch sử user và Admin hiển thị/tìm kiếm theo tên báo giá.
+- SQL mới tách riêng thành `01_UPGRADE_EXISTING_TO_v2.0.8.sql` và `02_VERIFY_v2.0.8.sql`.
+- SQL v2.0.7 chuyển vào `supabase/legacy/old_versions/` với đuôi `.disabled`.

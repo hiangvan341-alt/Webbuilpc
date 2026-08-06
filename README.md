@@ -1,18 +1,16 @@
-# Web Build PC v2.0.7
+# Web Build PC v2.0.8
 
-## Nâng cấp Supabase đang dùng
+Website Build PC của NOVA TECH PC dùng React + Vite + Supabase.
 
-Chạy đúng thứ tự:
+## Nâng cấp database hiện tại
 
-1. `supabase/01_UPGRADE_EXISTING_TO_v2.0.7.sql`
-2. `supabase/02_VERIFY_v2.0.7.sql`
+1. Chạy `supabase/01_UPGRADE_EXISTING_TO_v2.0.8.sql`.
+2. Chạy `supabase/02_VERIFY_v2.0.8.sql`.
+3. Không chạy lại `schema.sql` trên database đang có dữ liệu.
 
-Không chạy `schema.sql` trên database đang có dữ liệu. Các SQL phiên bản cũ nằm trong `supabase/legacy/old_versions`.
+## Điểm mới
 
-## Tính năng mới
-
-- Thông báo giao diện web thay cho alert/confirm/prompt của trình duyệt.
-- User quản lý cấu hình đã lưu: thêm, sửa, xóa, sử dụng lại.
-- Admin xem cấu hình của từng user và chuyển thành cấu hình mẫu.
-- Admin bật/tắt cấu hình mẫu công khai.
-- Hướng dẫn quản trị nằm ngay trong tab Admin.
+- Nút Lưu cấu hình nằm nổi bật tại Tóm tắt cấu hình.
+- Lưu cấu hình theo tên trong tài khoản, không còn luồng bản nháp cục bộ.
+- Tên khách hàng trong báo giá không bắt buộc.
+- Tên báo giá: `Tên khách hàng - Tổng tiền`, hoặc `Khách lẻ - Tổng tiền`.
