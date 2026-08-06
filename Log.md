@@ -1,4 +1,11 @@
-# Log.md
+# Web Build PC - Log
+
+## v1.5.1 - 06/08/2026
+- Thiết kế lại nút Đăng nhập khách hàng trên thanh điều hướng theo màu thương hiệu NOVA TECH PC.
+- Chuẩn hóa tên tài khoản trước khi đăng nhập.
+- Sửa dứt điểm hàm tạo user, cấp lại mật khẩu và user_login.
+- Thêm migration_v1.5.1.sql để cập nhật Supabase và làm mới schema cache.
+
 
 ## v1.5.0 — 2026-08-06 07:52 (Asia/Bangkok)
 - Thêm 3 chế độ hiển thị danh mục: lưới, cột gọn và hàng ngang.

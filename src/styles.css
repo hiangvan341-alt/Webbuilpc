@@ -90,3 +90,15 @@
 .customer-login-help b{color:#008b6d}
 @media(max-width:800px){.customer-login-dialog{grid-template-columns:1fr}.customer-login-brand{display:none}.customer-login-form{padding:62px 25px 30px;min-height:500px}.product-grid.rows .product{grid-template-columns:minmax(180px,1fr) 105px 120px}.product-grid.rows .product p{display:none}.product-grid.rows .product .stock{grid-column:2}.product-grid.rows .product strong{grid-column:3}.product-grid.rows .product button{grid-column:1/4;grid-row:2}.product-grid.columns{grid-template-columns:1fr}}
 @media(max-width:560px){.product-grid.grid{grid-template-columns:1fr}.selected{grid-template-columns:minmax(0,1fr) 30px}.selected strong{grid-column:1}.customer-login-title b{font-size:19px}}
+
+
+/* v1.5.1 - Nút đăng nhập khách hàng trên thanh điều hướng */
+.topbar nav{gap:14px}
+.user-login{height:44px;border:0;border-radius:12px;padding:5px 13px 5px 6px;background:linear-gradient(135deg,#00bc91,#008c70);color:#fff;display:inline-flex;align-items:center;gap:9px;cursor:pointer;box-shadow:0 8px 20px rgba(0,169,130,.20);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.user-login:hover{transform:translateY(-1px);box-shadow:0 11px 24px rgba(0,169,130,.28);filter:brightness(1.02)}
+.user-login-icon{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.20);display:grid;place-items:center;flex:0 0 auto}
+.user-login-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05}
+.user-login-text b{font-size:13px;font-weight:800}
+.user-login-text small{font-size:9px;margin-top:3px;color:#dffff6;letter-spacing:.25px}
+.topbar .admin{height:44px;display:inline-flex;align-items:center;gap:7px;border-color:#cfd8e3;color:#344054;cursor:pointer}
+@media(max-width:680px){.user-login{padding-right:6px}.user-login-text{display:none}.topbar nav{gap:8px}.topbar .admin{padding:10px}.topbar .admin:not(:hover){font-size:0}.topbar .admin svg{font-size:initial}}
